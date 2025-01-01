@@ -1,3 +1,5 @@
-theme: jekyll-theme-hacker
-title: The 80/20 Solution
-description: Gordon Weakliem's Weblog
+remote_theme: pages-themes/hacker@v0.2.0
+plugins:
+- jekyll-remote-theme # add this line to the plugins list if you already have onetitle: The 80/20 Solution
+title: Eighty/Twenty
+description: .plan for Gordon Weakliem
