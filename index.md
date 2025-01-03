@@ -11,6 +11,8 @@ This is the personal website for Gordon Weakliem. I've owned this domain for abo
   {% endfor %}
 </ul>
 
+[Feed](/feed.xml)
+
 ## Links
 * [GitHub](https://github.com/gweakliem)
 * [X](https://x.com/weakliem69467)
