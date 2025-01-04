@@ -1,5 +1,4 @@
 ---
-layout: default
 title: "Inline Script Dependencies"
 date: 2025-01-03
 categories: [til]

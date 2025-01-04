@@ -1,6 +1,8 @@
 ---
 title: "Learning UV"
-categories: [python,aicoding]
+tags: 
+    - python
+    - aicoding
 date: 2025-01-04
 ---
 

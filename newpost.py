@@ -32,11 +32,12 @@ def format_categories(categories: Optional[str]) -> List[str]:
         return []
     return [cat.replace(' ', '_').strip() for cat in categories.split(',')]
 
-def create_front_matter(title: str, categories: List[str]) -> str:
+def create_front_matter(title: str, categories: List[str], tags: List[str]) -> str:
     """Generate Jekyll front matter."""
     category_str = f"\ncategories: [{', '.join(categories)}]" if categories else ""
+    tag_str = f"\ntags: [{'  -'.join(tags)}]" if tags else ""
     return f"""---
-title: "{title}"{category_str}
+title: "{title}"{category_str}{tag_str}
 date: {datetime.date.today().isoformat()}
 ---
 """
@@ -53,12 +54,13 @@ def create_link_content(link: str, attrib: str, via: Optional[str] = None) -> st
 @click.option('-l', '--link', help='URL for link post')
 @click.option('-a', '--attrib', help='name to attribute to link post')
 @click.option('-v', '--via', help='Via link')
-@click.option('-c', '--categories', help='Comma-separated categories')
+@click.option('-g', '--tags', help='Comma-separated tags')
 def main(title: str, yes: bool, til: bool, link: str, attrib: str, 
-         via: str, categories: Optional[str]) -> None:
+         via: str, tags: Optional[str]) -> None:
     """Create a new Jekyll blog post."""
     # Process categories
-    cats = format_categories(categories) or []
+    tags = format_categories(tags)
+    cats = []
     if til:
         cats = ['til'] + cats
     if link:
