@@ -1,31 +1,7 @@
+## Eighty/Twenty
 
+This is the source for [eighty-twenty.net](https://eighty-twenty.net).
 
-<!--
-  <<< Author notes: Finish >>>
-  Review what we learned, ask for feedback, provide next steps.
--->
+It's built on [Github Pages](https://pages.github.com/) and [Jekyll](https://jekyllrb.com/) and uses the [Hacker](https://github.com/pages-themes/hacker) theme.
 
-## Finish
-
-_Congratulations friend, you've completed this course!_
-
-<img src=https://octodex.github.com/images/constructocat2.jpg alt=celebrate width=300 align=right>
-
-Your blog is now live and has been deployed!
-
-Here's a recap of all the tasks you've accomplished in your repository:
-
-- You enabled GitHub Pages.
-- You selected a theme using the config file.
-- You learned about proper directory format and file naming conventions in Jekyll.
-- You created your first blog post with Jekyll!
-
-### What's next?
-
-- Keep working on your GitHub Pages site... we love seeing what you come up with!
-- We'd love to hear what you thought of this course [in our discussion board](https://github.com/orgs/skills/discussions/categories/github-pages).
-- [Take another GitHub Skills course](https://github.com/skills).
-- [Read the GitHub Getting Started docs](https://docs.github.com/en/get-started).
-- To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).
-
-
+`newpost.py` creates new posts. Run `uv run newpost --help` for help. Once you've created a post, commit the new file and run `git push`, Github Actions does the rest.
