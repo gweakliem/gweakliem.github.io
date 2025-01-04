@@ -18,3 +18,5 @@ This is the personal website for Gordon Weakliem. I've owned this domain for abo
 * [X](https://x.com/weakliem69467)
 * [Bluesky](https://bluesky.app/profile/2hardproblems)
 * [LinkedIn](https://linkedin.com/in/gweakliem)
+
+Built with the [Hacker](https://github.com/pages-themes/hacker) theme for [GitHub Pages](https://pages.github.com/).
