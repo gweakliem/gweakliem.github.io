@@ -4,7 +4,8 @@ plugins:
   - jekyll-feed
 title: Eighty/Twenty
 description: .plan for Gordon Weakliem
-
+timezone: America/Denver
+exclude: README.md, .gitignore, newpost.py
 defaults:
   -
     scope:

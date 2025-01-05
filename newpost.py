@@ -74,7 +74,7 @@ def main(title: str, yes: bool, til: bool, link: str, attrib: str,
     full_path = posts_dir / filename
 
     # Create content
-    content = create_front_matter(title, cats)
+    content = create_front_matter(title, cats, tags)
     if link:
         if not attrib:
             # Try to get domain as author if not provided
