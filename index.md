@@ -18,6 +18,8 @@ This is the personal website for Gordon Weakliem. I've owned this domain for abo
 
 [TIL](/category/til/)
 
+[Archive](/archive)
+
 [Feed](/feed.xml)
 
 ## Links
