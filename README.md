@@ -14,3 +14,4 @@ bundle install
 bundle exec jekyll serve
 ```
 
+[Drafts](https://jekyllrb.com/docs/posts/#drafts) add the `--drafts` to integrate posts in the `_drafts` folder.
