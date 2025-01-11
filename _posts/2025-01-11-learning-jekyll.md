@@ -4,7 +4,7 @@ date: 2025-01-11
 categories: [til]
 ---
 
-Edit: It turns out this is all wrong, jekyll will build locally but the GitHub actions to build pages will not render the archives. It's a [known issue]() and they won't fix it, so this attempt was a failure, at least for GitHub pages. TIL also that you don't declare victory until CI/CD completes :)
+Edit: It turns out this is all wrong, jekyll will build locally but the GitHub actions to build pages will not render the archives. It's a [known issue](https://github.com/github/pages-gem/pull/106) and they won't fix it, so this attempt was a failure, at least for GitHub pages. TIL also that you don't declare victory until CI/CD completes :)
 
 I've been building out this site iteratively, working in small chunks. Stood up a basic site, picked a theme, tweaks to the layout, install a [syndication feed](/feed.xml). The one major thing I've wanted was to set up archives. It seems like Jekyll has enough to do it myself, but I ran into this post by David Sleight on [grouping by year](https://stuntbox.com/blog/jekyll-archives-group-posts-by-year/) and David talks about using [jekyll-archives](https://github.com/jekyll/jekyll-archives/tree/master) as part of his solution, so I figured that would save me some work. However, I couldn't get it to work and while debugging I ran into some things suggesting that `jekyll-archives` doesn't work with GitHub pages. I went to bed and came back with some fresh eyes and noticed something interesting in my Gemfile:
 
