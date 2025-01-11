@@ -16,6 +16,8 @@ This is the personal website for Gordon Weakliem. I've owned this domain for abo
   {% endfor %}
 </ul>
 
+[TIL](/category/til/)
+
 [Feed](/feed.xml)
 
 ## Links
