@@ -2,7 +2,6 @@ remote_theme: pages-themes/hacker@v0.2.0
 plugins:
   - jekyll-remote-theme # add this line to the plugins list if you already have onetitle: The 80/20 Solution
   - jekyll-feed
-  - jekyll-archives
 title: Eighty/Twenty
 description: .plan for Gordon Weakliem
 timezone: America/Denver
@@ -17,8 +16,3 @@ defaults:
     values:
       layout: "post"
       author: "Gordon Weakliem"
-jekyll-archives:
-  enabled: all
-  layout: "archive"
-  permalinks:
-    category: '/category/:name/'
