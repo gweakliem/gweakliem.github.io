@@ -5,6 +5,7 @@ plugins:
 title: Eighty/Twenty
 description: .plan for Gordon Weakliem
 timezone: America/Denver
+google_analytics: G-W6CCEDPL8K
 exclude: 
   - README.md
   - .gitignore
