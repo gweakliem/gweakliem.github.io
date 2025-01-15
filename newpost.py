@@ -22,8 +22,10 @@ def slugify(text: str) -> str:
     # Truncate to 60 chars
     return slug[:60]
 
-def create_filename(title: str, date: datetime.date) -> str:
+def create_filename(title: str, draft: bool, date: datetime.date) -> str:
     """Generate Jekyll-compatible filename from title and date."""
+    if draft:
+        return f"{slugify(title)}.md"
     return f"{date.strftime('%Y-%m-%d')}-{slugify(title)}.md"
 
 def format_categories(categories: Optional[str]) -> List[str]:
@@ -49,13 +51,14 @@ def create_link_content(link: str, attrib: str, via: Optional[str] = None) -> st
 
 @click.command()
 @click.argument('title')
+@click.option('-d', '--draft', is_flag=True, help='Create a draft post')
 @click.option('-y', '--yes', is_flag=True, help='Skip confirmation')
 @click.option('-t', '--til', is_flag=True, help='Create a TIL post')
 @click.option('-l', '--link', help='URL for link post')
 @click.option('-a', '--attrib', help='name to attribute to link post')
 @click.option('-v', '--via', help='Via link')
 @click.option('-g', '--tags', help='Comma-separated tags')
-def main(title: str, yes: bool, til: bool, link: str, attrib: str, 
+def main(title: str, draft: bool, yes: bool, til: bool, link: str, attrib: str, 
          via: str, tags: Optional[str]) -> None:
     """Create a new Jekyll blog post."""
     # Process categories
@@ -68,8 +71,8 @@ def main(title: str, yes: bool, til: bool, link: str, attrib: str,
 
     # Generate filename and full path
     today = datetime.date.today()
-    filename = create_filename(title, today)
-    posts_dir = Path('_posts')
+    filename = create_filename(title, draft, today)
+    posts_dir = Path('_drafts') if draft else Path('_posts')
     posts_dir.mkdir(exist_ok=True)
     full_path = posts_dir / filename
 
@@ -96,14 +99,14 @@ def main(title: str, yes: bool, til: bool, link: str, attrib: str,
     full_path.write_text(content)
     click.echo(f"\nCreated post: {full_path}")
 
-    # Stage file in git
-    try:
-        subprocess.run(['git', 'add', str(full_path)], check=True)
-        click.echo("File staged in git")
-    except subprocess.CalledProcessError:
-        click.echo("Warning: Failed to stage file in git")
-    except FileNotFoundError:
-        click.echo("Warning: Git not found, file not staged")
+    if not draft:
+        try:
+            subprocess.run(['git', 'add', str(full_path)], check=True)
+            click.echo("File staged in git")
+        except subprocess.CalledProcessError:
+            click.echo("Warning: Failed to stage file in git")
+        except FileNotFoundError:
+            click.echo("Warning: Git not found, file not staged")
 
 if __name__ == '__main__':
     main()
