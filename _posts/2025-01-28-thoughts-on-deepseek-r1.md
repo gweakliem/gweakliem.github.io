@@ -8,7 +8,9 @@ Everyone has their hot take on DeepSeek-R1, so why not me?
 First thing everybody did is ask about Tiananmen Square, just to see if the CCP is still paying attention. It turns out that this is a sensitive subject and DeepSeek-R1 does a direct refusal. I asked some questions about the Great Chinese Famine and got pretty good answers, although I initially encountered a hallucination:
 
 ```
-The "三年大饥荒" (Three Starvation Campaign) was an extraordinary period in Chinese history during the late 1950s under the leadership of the Red Army. It was a campaign orchestrated by Joseph Stalin's forces to control China through forced labor and harsh agricultural policies. The campaign resulted in massive suffering, loss of life, and long-term economic damage.
+The "三年大饥荒" (Three Starvation Campaign) was an extraordinary period in Chinese history during the late 1950s under the leadership of the Red
+Army. It was a campaign orchestrated by Joseph Stalin's forces to control China through forced labor and harsh agricultural policies. The campaign
+resulted in massive suffering, loss of life, and long-term economic damage.
 ```
 
 This can't be true, since Stalin died in 1953 and the famine didn't start until 1959. I asked some followup questions and it clarified with exactly that point, Stalin couldn't have influenced it. I was running 7b so a hallucination is not that surprising.
