@@ -23,6 +23,7 @@ This is the personal website for Gordon Weakliem. I've owned this domain for abo
 [Feed](/feed.xml)
 
 ## Links
+* [Projects](/projects)
 * [GitHub](https://github.com/gweakliem)
 * [X](https://x.com/weakliem69467)
 * [Bluesky](https://bsky.app/profile/2hardproblems.bsky.social)
