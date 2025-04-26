@@ -42,7 +42,7 @@ def create_front_matter(
     title: str, categories: List[str], tags: List[str], draft: bool
 ) -> str:
     """Generate Jekyll front matter."""
-    draft_str = "draft: true" if draft else "draft: false"
+    draft_str = "published: true" if draft else "draft: false"
     category_str = f"\ncategories: [{', '.join(categories)}]" if categories else ""
     tag_str = f"\ntags: [{'  -'.join(tags)}]" if tags else ""
     return f"""---
