@@ -13,14 +13,16 @@ from pathlib import Path
 from typing import Optional, List
 from urllib.parse import urlparse
 
+
 def slugify(text: str) -> str:
     """Convert text to URL-friendly slug."""
     # Convert to lowercase and replace spaces/special chars with dashes
-    slug = re.sub(r'[^a-zA-Z0-9]+', '-', text.lower())
+    slug = re.sub(r"[^a-zA-Z0-9]+", "-", text.lower())
     # Remove leading/trailing dashes
-    slug = slug.strip('-')
+    slug = slug.strip("-")
     # Truncate to 60 chars
     return slug[:60]
+
 
 def create_filename(title: str, draft: bool, date: datetime.date) -> str:
     """Generate Jekyll-compatible filename from title and date."""
@@ -28,14 +30,19 @@ def create_filename(title: str, draft: bool, date: datetime.date) -> str:
         return f"{slugify(title)}.md"
     return f"{date.strftime('%Y-%m-%d')}-{slugify(title)}.md"
 
+
 def format_categories(categories: Optional[str]) -> List[str]:
     """Format category string into list, replacing spaces with underscores."""
     if not categories:
         return []
-    return [cat.replace(' ', '_').strip() for cat in categories.split(',')]
+    return [cat.replace(" ", "_").strip() for cat in categories.split(",")]
 
-def create_front_matter(title: str, categories: List[str], tags: List[str]) -> str:
+
+def create_front_matter(
+    title: str, categories: List[str], tags: List[str], draft: bool
+) -> str:
     """Generate Jekyll front matter."""
+    draft_str = "draft: true" if draft else "draft: false"
     category_str = f"\ncategories: [{', '.join(categories)}]" if categories else ""
     tag_str = f"\ntags: [{'  -'.join(tags)}]" if tags else ""
     return f"""---
@@ -44,46 +51,56 @@ date: {datetime.date.today().isoformat()}
 ---
 """
 
+
 def create_link_content(link: str, attrib: str, via: Optional[str] = None) -> str:
     """Generate link post content."""
-    via_html = f' <small>(<a href="{via}">via</a>)</small>' if via else ''
+    via_html = f' <small>(<a href="{via}">via</a>)</small>' if via else ""
     return f'<a href="{link}">{attrib}</a>{via_html}\n'
 
+
 @click.command()
-@click.argument('title')
-@click.option('-d', '--draft', is_flag=True, help='Create a draft post')
-@click.option('-y', '--yes', is_flag=True, help='Skip confirmation')
-@click.option('-t', '--til', is_flag=True, help='Create a TIL post')
-@click.option('-l', '--link', help='URL for link post')
-@click.option('-a', '--attrib', help='name to attribute to link post')
-@click.option('-v', '--via', help='Via link')
-@click.option('-g', '--tags', help='Comma-separated tags')
-def main(title: str, draft: bool, yes: bool, til: bool, link: str, attrib: str, 
-         via: str, tags: Optional[str]) -> None:
+@click.argument("title")
+@click.option("-d", "--draft", is_flag=True, help="Create a draft post")
+@click.option("-y", "--yes", is_flag=True, help="Skip confirmation")
+@click.option("-t", "--til", is_flag=True, help="Create a TIL post")
+@click.option("-l", "--link", help="URL for link post")
+@click.option("-a", "--attrib", help="name to attribute to link post")
+@click.option("-v", "--via", help="Via link")
+@click.option("-g", "--tags", help="Comma-separated tags")
+def main(
+    title: str,
+    draft: bool,
+    yes: bool,
+    til: bool,
+    link: str,
+    attrib: str,
+    via: str,
+    tags: Optional[str],
+) -> None:
     """Create a new Jekyll blog post."""
     # Process categories
     tags = format_categories(tags)
     cats = []
     if til:
-        cats = ['til'] + cats
+        cats = ["til"] + cats
     if link:
-        cats = ['links'] + cats
+        cats = ["links"] + cats
 
     # Generate filename and full path
     today = datetime.date.today()
     filename = create_filename(title, draft, today)
-    posts_dir = Path('_drafts') if draft else Path('_posts')
+
     posts_dir.mkdir(exist_ok=True)
     full_path = posts_dir / filename
 
     # Create content
-    content = create_front_matter(title, cats, tags)
+    content = create_front_matter(title, cats, tags, draft)
     if link:
         if not attrib:
             # Try to get domain as author if not provided
             domain = urlparse(link).netloc
-            attrib = domain.replace('www.', '')
-        content += '\n' + create_link_content(link, attrib, via)
+            attrib = domain.replace("www.", "")
+        content += "\n" + create_link_content(link, attrib, via)
 
     # Show preview
     if not yes:
@@ -101,12 +118,13 @@ def main(title: str, draft: bool, yes: bool, til: bool, link: str, attrib: str,
 
     if not draft:
         try:
-            subprocess.run(['git', 'add', str(full_path)], check=True)
+            subprocess.run(["git", "add", str(full_path)], check=True)
             click.echo("File staged in git")
         except subprocess.CalledProcessError:
             click.echo("Warning: Failed to stage file in git")
         except FileNotFoundError:
             click.echo("Warning: Git not found, file not staged")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

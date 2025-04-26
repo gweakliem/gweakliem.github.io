@@ -14,4 +14,4 @@ bundle install
 bundle exec jekyll serve
 ```
 
-[Drafts](https://jekyllrb.com/docs/posts/#drafts) add the `--drafts` to integrate posts in the `_drafts` folder.
+Content is served on [http://localhost:4000](http://localhost:4000) by default.
