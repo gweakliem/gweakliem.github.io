@@ -90,6 +90,7 @@ def main(
     today = datetime.date.today()
     filename = create_filename(title, draft, today)
 
+    posts_dir = Path(__file__).parent / "_posts"
     posts_dir.mkdir(exist_ok=True)
     full_path = posts_dir / filename
 
