@@ -24,10 +24,8 @@ def slugify(text: str) -> str:
     return slug[:60]
 
 
-def create_filename(title: str, draft: bool, date: datetime.date) -> str:
+def create_filename(title: str, date: datetime.date) -> str:
     """Generate Jekyll-compatible filename from title and date."""
-    if draft:
-        return f"{slugify(title)}.md"
     return f"{date.strftime('%Y-%m-%d')}-{slugify(title)}.md"
 
 
@@ -42,12 +40,13 @@ def create_front_matter(
     title: str, categories: List[str], tags: List[str], draft: bool
 ) -> str:
     """Generate Jekyll front matter."""
-    draft_str = "published: true" if draft else "draft: false"
+    draft_str = f"published: {not draft}"
     category_str = f"\ncategories: [{', '.join(categories)}]" if categories else ""
     tag_str = f"\ntags: [{'  -'.join(tags)}]" if tags else ""
     return f"""---
 title: "{title}"{category_str}{tag_str}
 date: {datetime.date.today().isoformat()}
+{draft_str}
 ---
 """
 
