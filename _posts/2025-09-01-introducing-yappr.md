@@ -4,7 +4,7 @@ date: 2025-09-01
 published: True
 ---
 
-I just completed an MVP on something I'm calling [Yappr](https://yappr-jade.vercel.app/). This all started about 10 days ago when a friend sent me a link to an article, but I was about to jump into the car. Then, I got to my destination and found that the site was not mobile-friendly and I couldn't read it on my phone. I eventually got to my desktop and read it, but the whole thing got me wishing for an app that would read to me when my eyes were busy elsewhere. 
+I just completed an MVP on something I'm calling [Yappr](https://yappr.site/). This all started about 10 days ago when a friend sent me a link to an article, but I was about to jump into the car. Then, I got to my destination and found that the site was not mobile-friendly and I couldn't read it on my phone. I eventually got to my desktop and read it, but the whole thing got me wishing for an app that would read to me when my eyes were busy elsewhere. 
 
 Initially I thought I'd create a dedicated app for mobile, but this had a few problems: iOS or Android? Did I want to support CarPlay / Android Auto? Did I want to use native or something cross platform, and all the tradeoffs involved there. I also haven't done much mobile development and all this felt like friction, I just wanted to listen to an article!
 
