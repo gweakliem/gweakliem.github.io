@@ -17,3 +17,5 @@ There are a lot of people who rightfully feel like there's a moment where compet
 > Cue nine thousand sandbox startups, all of which will eventually be killed off by a single OSS winner wrapped by home-grown internal vibe-coded SaaS.
 
 I'm not convinced that will be the case. I'm starting to feel like there will be more companies building custom solutions for at least part of their business, and some might turn those into products, but I feel like these highly generalized solutions with a plugin architecture and endless configurability will be less appealing in the future.
+
+One thing I've been thinking about a lot is the case of the Luddites in England. The modern word "luddite" refers to anti-technology, but the Luddites weren't anti-tech per se, they were worried about its impact on labor. They had good reason to be, textile manufacture was one of the early adopters of abusive labor practices, unsafe conditions, and child labor. People are worried about mental health, financial, and environmental effects, but I think the most clear and present danger is the effect on labor.
